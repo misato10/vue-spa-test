@@ -4,7 +4,9 @@
       <router-link to="/" exact>Home</router-link>
       <router-link to="/product">商品情報</router-link>
     </nav>
-    <router-view/>
+    <transition name="view">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -15,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -26,5 +28,14 @@ export default {
 }
 .router-link-active {
   background: #e25193;
+}
+.view-enter-active, .view-leave-active {
+  transition: opacity 0.5s;
+}
+.view-leave-active {
+  position: absolute;
+}
+.view-enter, .view-leave-to {
+  opacity: 0;
 }
 </style>
